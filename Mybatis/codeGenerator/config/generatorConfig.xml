@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <!-- 指定jdbc driver的位置 -->
+  <classPathEntry location="C:/jdbc/ojdbc14.jar" />
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+
+    <commentGenerator>
+       <!-- true 不要產生註解。 -->
+       <property name="suppressAllComments" value="true" />
+	   <!-- true 不要在註解裡產生timestamp。 -->
+       <property name="suppressDate" value="true" />
+    </commentGenerator>
+
+	<!-- DB連線設定。 -->
+    <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@localhost:1521:xe"
+        userId="mpclmuser"
+        password="mpclmuser">
+    </jdbcConnection>-->
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@192.168.14.201:1521:biee"
+        userId="mpclmuser"
+        password="mpclmuser">
+    </jdbcConnection>
+
+    <!-- DB數字相位的對應。true 數字欄位都對應成BigDecimal，false MyBatis自動判斷。 -->
+<!--    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver> -->
+
+	<!-- 產生 model object。targetPackage輸出的package。targetProject輸出的目錄。 -->
+    <javaModelGenerator targetPackage="com.fubon.mplus.bean" targetProject="output">
+    </javaModelGenerator>
+
+	<!-- 產生 sqlMap檔(MyBatis Mapper XML設定檔)。targetPackage輸出的package。targetProject輸出的目錄。 -->
+    <sqlMapGenerator targetPackage="com.fubon.mplus.dao.xml"  targetProject="output">
+    </sqlMapGenerator>
+
+	<!-- 產生 mapper interface檔。targetPackage輸出的package。targetProject輸出的目錄。 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.fubon.mplus.dao.mapper"  targetProject="output">
+    </javaClientGenerator>
+
+	<!-- table element, 設定要產生的檔案的來源db table。 -->
+	<!-- schema, DB schema。 -->
+	<!-- tableName, Table的名稱。 -->
+	<!-- domainObjectName, Model Object的名稱。 -->
+	<!-- enableInsert, 是否要產生 insert 的 method。 -->
+	<!-- enableUpdateByExample, 是否要產生 updateByExample 的 method。 -->
+	<!-- enableUpdateByPrimaryKey, 是否要產生 updateByPrimaryKey 的 method。 -->
+	<!-- enableDeleteByExample, 是否要產生 deleteByExample 的 method。 -->
+	<!-- enableDeleteByPrimaryKey, 是否要產生 deleteByPrimaryKey 的 method。 -->
+	<table tableName="MPCLM_B_SYS_HIERARCHY" domainObjectName="BSysHierarchy">
+		<generatedKey column="SYS_HIERARCHY_ID" sqlStatement="select MPCLM_B_SYS_HIERARCHY_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+
+		<columnOverride column="HIERARCHY_LEVEL" javaType="java.lang.Integer"></columnOverride>
+		<columnOverride column="ORDERBY" javaType="java.lang.Integer"></columnOverride>
+	</table>
+	<table tableName="MPCLM_B_SYS_MENU" domainObjectName="BSysMenu">
+		<generatedKey column="SYS_MENU_ID" sqlStatement="select MPCLM_B_SYS_MENU_S.NEXTVAL from dual" identity="false"
+			type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_PARAM" domainObjectName="BSysParam">
+		<generatedKey column="SYS_PARAM_ID" sqlStatement="select MPCLM_B_SYS_PARAM_S.NEXTVAL from dual" identity="false"
+			type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_PROGRAM" domainObjectName="BSysProgram">
+		<generatedKey column="SYS_PROGRAM_ID" sqlStatement="select MPCLM_B_SYS_PROGRAM_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_PUB_MSG" domainObjectName="BSysPubMsg">
+		<generatedKey column="SYS_PUB_MSG_ID" sqlStatement="select MPCLM_B_SYS_PUB_MSG_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+
+		<columnOverride column="DELETED" javaType="java.lang.Integer"></columnOverride>
+	</table>
+	<table tableName="MPCLM_B_SYS_REL_UR" domainObjectName="BSysRelUr">
+		<generatedKey column="SYS_REL_UG_ID" sqlStatement="select MPCLM_B_SYS_REL_UR_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_REL_URP" domainObjectName="BSysRelUrp">
+		<generatedKey column="SYS_REL_URP_ID" sqlStatement="select MPCLM_B_SYS_REL_URP_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_USER" domainObjectName="BSysUser">
+		<generatedKey column="SYS_USER_ID" sqlStatement="select MPCLM_B_SYS_USER_PWD_LOG_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+
+		<columnOverride column="DELETED" javaType="java.lang.Integer"></columnOverride>
+		<columnOverride column="PWD_ERR_TIMES" javaType="java.lang.Integer"></columnOverride>
+	</table>
+	<table tableName="MPCLM_B_SYS_USER_PWD_LOG" domainObjectName="BSysUserPwdLog">
+		<generatedKey column="SYS_USER_PWD_LOG_ID" sqlStatement="select MPCLM_B_SYS_USER_ROLE_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_B_SYS_USER_ROLE" domainObjectName="BSysUserRole">
+		<generatedKey column="SYS_USER_ROLE_ID" sqlStatement="select MPCLM_B_SYS_USER_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+
+		<columnOverride column="DELETED" javaType="java.lang.Integer"></columnOverride>
+	</table>
+	<table tableName="MPCLM_F_SYS_FUNCTION" domainObjectName="FSysFunction">
+		<generatedKey column="SYS_FUNCTION_ID" sqlStatement="select MPCLM_F_SYS_FUNCTION_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+	<table tableName="MPCLM_F_SYS_HIERARCHY" domainObjectName="FSysHierarchy">
+		<generatedKey column="SYS_HIERARCHY_ID" sqlStatement="select MPCLM_F_SYS_HIERARCHY_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+
+		<columnOverride column="HIERARCHY_LEVEL" javaType="java.lang.Integer"></columnOverride>
+		<columnOverride column="ORDERBY" javaType="java.lang.Integer"></columnOverride>
+		<columnOverride column="EFFECTIVE_ITEM_NO" javaType="java.lang.Integer"></columnOverride>
+	</table>
+	<table tableName="MPCLM_F_SYS_PROGRAM" domainObjectName="FSysProgram">
+		<generatedKey column="SYS_PROGRAM_ID" sqlStatement="select MPCLM_F_SYS_PROGRAM_S.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+	</table>
+
+	
+	
+	<table tableName="B2CREPORT" domainObjectName="B2CReport">
+		<generatedKey column="SERIAL_NUM" sqlStatement="select B2CREPORTSEQ.NEXTVAL from dual"
+			identity="false" type="pre"></generatedKey>
+		
+		<columnOverride column="SERIAL_NUM" javaType="java.math.BigDecimal"></columnOverride>		
+			
+	</table>
+	<table tableName="MPLUS010" domainObjectName="MPlus010">
+	</table>
+	<table tableName="MPLUS091" domainObjectName="MPlus091">
+        <columnOverride column="PARA_NO" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="PARA_DESC" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="PARA_CONTENT" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="IS_ENCRY" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="CHANGE_ID" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="CHANGE_DATE" javaType="java.lang.String"></columnOverride>
+        <columnOverride column="CHANGE_TIME" javaType="java.lang.String"></columnOverride>
+	</table>
+	
+
+  </context>
+</generatorConfiguration>
